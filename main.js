@@ -181,7 +181,7 @@ function lookAtPayments(transactionType, paymentType) {
   transactions.forEach(function(transaction) {
   if (transaction["type"] === transactionType && transaction["paymentMethod"] === paymentType)
   {
-    count ++
+    count ++;
   }
   })
   return count;
