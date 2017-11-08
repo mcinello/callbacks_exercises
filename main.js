@@ -120,25 +120,6 @@ var totalTransactions = transactions.length;
 console.log( 'The total number of transactions is:', totalTransactions );
 
 
-// --------------------------------------------------
-// QUESTION 01
-// --------------------------------------------------
-/*
-  Calculate the total number of 'sales'.
-
-  HINT(S):
-  - Not all transactions are 'sales'.
-*/
-var numSales = function() {
-  var sales = 0;
-  transactions.forEach(function(transaction) {
-    if (transaction["type"] === 'sale') {
-      sales ++;
-    }
-  })
-  return sales;
-}
-
 /*
   Hey, welcome to the first question!
 
@@ -158,6 +139,25 @@ var numSales = function() {
   The breakdown above takes up a lot of space, feel free to move it to the top or bottom of the file!
 */
 
+
+// --------------------------------------------------
+// QUESTION 01
+// --------------------------------------------------
+/*
+  Calculate the total number of 'sales'.
+
+  HINT(S):
+  - Not all transactions are 'sales'.
+*/
+var numSales = function() {
+  var sales = 0;
+  transactions.forEach(function(transaction) {
+    if (transaction["type"] === 'sale') {
+      sales ++;
+    }
+  })
+  return sales;
+};
 console.log( 'The total number of sales is:', numSales() );
 
 
@@ -167,9 +167,18 @@ console.log( 'The total number of sales is:', numSales() );
 /*
   Calculate the total number of 'purchases'.
 */
-var numPurchases;
+var numPurchases = function() {
+  var purchases = 0;
+  transactions.forEach(function(transaction) {
+    if (transaction["type"] === 'purchase') {
+      purchases ++;
+    }
+  })
+  return purchases;
+}
 
-console.log( 'The total number of purchases is:', numPurchases );
+
+console.log( 'The total number of purchases is:', numPurchases() );
 
 
 // --------------------------------------------------
