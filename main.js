@@ -218,7 +218,7 @@ console.log( 'The total number of credit purchases is:', numCreditPurchases('cre
 // --------------------------------------------------
 function uniqueObjects(object) {
   var uniques = [];
-  transactions.forEach(function(transaction) {
+  transactions.map(function(transaction) {
     if (transaction[object])
     uniques.push(transaction[object])
   })
