@@ -275,16 +275,15 @@ var sales = transactions.filter(function(transaction){
 
 var customers = {};
 sales.forEach(function(sale) {
-    if (customers[sale.customer]) {
-      customers[sale.customer] += sale.items.length;
-    } else {
-      customers[sale.customer] = sale.items.length;
-    }
+  if (customers[sale.customer]) {
+    customers[sale.customer] += sale.items.length;
+  } else {
+    customers[sale.customer] = sale.items.length;
   }
-)
+})
 
-var customersArr = Object.keys(customers).filter(function(customer) {
-  return customers[customer] > 4
+var customersArr = Object.keys(customers).filter(function(item) {
+  return customers[item] > 4
 });
 
 var bigSpenders = customersArr.map(function(spender) {
@@ -303,7 +302,22 @@ console.log( 'The "big spenders" are:', bigSpenders );
   HINT(S):
   - Transactions don't have 'prices', but their 'items' do!
 */
-var sumSales;
+
+var saleItems = []
+sales.filter(function(sale) {
+  return saleItems.push(sale.items);
+})
+
+var firstSaleItems = []
+saleItems.filter(function(item) {
+  return firstSaleItems.push(item[0]);
+})
+
+var sumSales = 0;
+firstSaleItems.forEach(function(item) {
+  sumSales += item.price;
+  return sumSales;
+})
 
 console.log( 'The sum of all sales is:', sumSales );
 
