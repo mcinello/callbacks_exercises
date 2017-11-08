@@ -218,9 +218,9 @@ console.log( 'The total number of credit purchases is:', numCreditPurchases('cre
 // --------------------------------------------------
 function uniqueObjects(object) {
   var uniques = [];
-  transactions.map(function(transaction) {
+  transactions.forEach(function(transaction) {
     if (transaction[object])
-    uniques.push(transaction[object])
+    uniques.push(transaction[object]);
   })
   return uniques;
 }
@@ -268,7 +268,28 @@ console.log( 'The unique customers are:', uniqueCustomers );
   - There may be more than 1 'sale' that includes 5 or more items.
   - Individual transactions do not have either `name` or `numItems` properties, we'll have to add them to the output.
 */
-var bigSpenders;
+
+var sales = transactions.filter(function(transaction){
+  return transaction.type === 'sale';
+});
+
+var customers = {};
+sales.forEach(function(sale) {
+    if (customers[sale.customer]) {
+      customers[sale.customer] += sale.items.length;
+    } else {
+      customers[sale.customer] = sale.items.length;
+    }
+  }
+)
+
+var customersArr = Object.keys(customers).filter(function(customer) {
+  return customers[customer] > 4
+});
+
+var bigSpenders = customersArr.map(function(spender) {
+  return {name: spender, numItems: customers[spender] };
+})
 
 console.log( 'The "big spenders" are:', bigSpenders );
 
@@ -300,7 +321,7 @@ console.log( 'The sum of all sales is:', sumSales );
 
 var sumPurchases;
 
-console.log( 'The sum of all purhcases is:', sumPurchases );
+console.log( 'The sum of all purchases is:', sumPurchases );
 
 
 // --------------------------------------------------
