@@ -176,15 +176,18 @@ console.log( 'The total number of purchases is:', numPurchases );
 // --------------------------------------------------
 // QUESTION 03
 // --------------------------------------------------
-function lookAtPayments(transactionType, paymentType) {
+function lookAtPayments(transactionType) {
   var count = 0;
-  transactions.forEach(function(transaction) {
-  if (transaction["type"] === transactionType && transaction["paymentMethod"] === paymentType)
-  {
-    count ++;
-  }
-  })
-  return count;
+  var newFunction = function(paymentType) {
+    transactions.forEach(function(transaction) {
+    if (transaction["type"] === transactionType && transaction["paymentMethod"] === paymentType)
+    {
+      count ++;
+    }
+    })
+    return count;
+  };
+  return newFunction;
 }
 
 /*
@@ -193,8 +196,8 @@ function lookAtPayments(transactionType, paymentType) {
   HINT(S):
   - Don't forget that 'purchases' can also be made in 'cash'!
 */
-var numCashSales = lookAtPayments('sale', 'cash');
-console.log( 'The total number of cash sales is:', numCashSales );
+var numCashSales = lookAtPayments('sale');
+console.log( 'The total number of cash sales is:', numCashSales('cash') );
 
 
 // --------------------------------------------------
@@ -206,8 +209,8 @@ console.log( 'The total number of cash sales is:', numCashSales );
   HINT(S):
   - Make sure to exclude any 'sales' made by 'credit'!
 */
-var numCreditPurchases = lookAtPayments('purchase', 'credit');
-console.log( 'The total number of credit purchases is:', numCreditPurchases );
+var numCreditPurchases = lookAtPayments('purchase');
+console.log( 'The total number of credit purchases is:', numCreditPurchases('credit') );
 
 
 // --------------------------------------------------
