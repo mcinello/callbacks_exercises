@@ -213,6 +213,15 @@ console.log( 'The total number of credit purchases is:', numCreditPurchases );
 // --------------------------------------------------
 // QUESTION 05
 // --------------------------------------------------
+function uniqueObjects(object) {
+  var uniques = [];
+  transactions.forEach(function(transaction) {
+    if (transaction[object])
+    uniques.push(transaction[object])
+  })
+  return uniques;
+}
+
 /*
   Create an array that includes all of vendors which appear in the transactions data set.
   eg. `[ 'vendor one', 'vendor two', ... ]
@@ -222,10 +231,9 @@ console.log( 'The total number of credit purchases is:', numCreditPurchases );
   - The assembled array should be made up of strings, not full `transaction` objects.
   - This array is allowed to contain duplicate values.
 */
-var uniqueVendors;
+var uniqueVendors = uniqueObjects("vendor");
 
 console.log( 'The unique vendors are:', uniqueVendors );
-
 
 // --------------------------------------------------
 // QUESTION 06
@@ -239,7 +247,7 @@ console.log( 'The unique vendors are:', uniqueVendors );
   - The assembled array should be made up of strings, not full `transaction` objects.
   - Make sure that the resulting array *does not* include any duplicates.
 */
-var uniqueCustomers;
+var uniqueCustomers = uniqueObjects("customer");
 
 console.log( 'The unique customers are:', uniqueCustomers );
 
