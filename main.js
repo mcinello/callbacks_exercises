@@ -180,10 +180,10 @@ function lookAtPayments(transactionType) {
   var count = 0;
   var newFunction = function(paymentType) {
     transactions.forEach(function(transaction) {
-    if (transaction["type"] === transactionType && transaction["paymentMethod"] === paymentType)
-    {
-      count ++;
-    }
+      if (transaction["type"] === transactionType && transaction["paymentMethod"] === paymentType)
+      {
+        count ++;
+      }
     })
     return count;
   };
