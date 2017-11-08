@@ -139,6 +139,15 @@ console.log( 'The total number of transactions is:', totalTransactions );
   The breakdown above takes up a lot of space, feel free to move it to the top or bottom of the file!
 */
 
+function lookAtTransactions(transactionType) {
+  var count = 0;
+  transactions.forEach(function(transaction) {
+    if (transaction["type"] === transactionType) {
+      count ++;
+    }
+  })
+  return count;
+};
 
 // --------------------------------------------------
 // QUESTION 01
@@ -148,17 +157,10 @@ console.log( 'The total number of transactions is:', totalTransactions );
 
   HINT(S):
   - Not all transactions are 'sales'.
-*/
-var numSales = function() {
-  var sales = 0;
-  transactions.forEach(function(transaction) {
-    if (transaction["type"] === 'sale') {
-      sales ++;
-    }
-  })
-  return sales;
-};
-console.log( 'The total number of sales is:', numSales() );
+
+  */
+var numSales = lookAtTransactions('sale');
+console.log( 'The total number of sales is:', numSales );
 
 
 // --------------------------------------------------
@@ -167,18 +169,8 @@ console.log( 'The total number of sales is:', numSales() );
 /*
   Calculate the total number of 'purchases'.
 */
-var numPurchases = function() {
-  var purchases = 0;
-  transactions.forEach(function(transaction) {
-    if (transaction["type"] === 'purchase') {
-      purchases ++;
-    }
-  })
-  return purchases;
-}
-
-
-console.log( 'The total number of purchases is:', numPurchases() );
+var numPurchases = lookAtTransactions('purchase');
+console.log( 'The total number of purchases is:', numPurchases );
 
 
 // --------------------------------------------------
