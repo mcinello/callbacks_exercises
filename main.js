@@ -129,7 +129,15 @@ console.log( 'The total number of transactions is:', totalTransactions );
   HINT(S):
   - Not all transactions are 'sales'.
 */
-var numSales;
+var numSales = function() {
+  var sales = 0;
+  transactions.forEach(function(transaction) {
+    if (transaction["type"] === 'sale') {
+      sales ++;
+    }
+  })
+  return sales;
+}
 
 /*
   Hey, welcome to the first question!
@@ -150,7 +158,7 @@ var numSales;
   The breakdown above takes up a lot of space, feel free to move it to the top or bottom of the file!
 */
 
-console.log( 'The total number of sales is:', numSales );
+console.log( 'The total number of sales is:', numSales() );
 
 
 // --------------------------------------------------
