@@ -180,8 +180,7 @@ function lookAtPayments(transactionType) {
   var count = 0;
   var newFunction = function(paymentType) {
     transactions.forEach(function(transaction) {
-      if (transaction["type"] === transactionType && transaction["paymentMethod"] === paymentType)
-      {
+      if (transaction["type"] === transactionType && transaction["paymentMethod"] === paymentType) {
         count ++;
       }
     })
@@ -219,8 +218,9 @@ console.log( 'The total number of credit purchases is:', numCreditPurchases('cre
 function uniqueObjects(object) {
   var uniques = [];
   transactions.forEach(function(transaction) {
-    if (transaction[object])
-    uniques.push(transaction[object]);
+    if (transaction[object]) {
+      uniques.push(transaction[object]);
+    }
   })
   return uniques;
 }
@@ -313,13 +313,13 @@ saleItems.forEach(function(item) {
   return firstSaleItems.push(item[0]);
 })
 
-var sumSales = firstSaleItems.reduce(function(total, item) {
+var sumFirstSales = firstSaleItems.reduce(function(total, item) {
   return total += item.price;
 }, 0);
 
 
 
-console.log( 'The sum of all sales is:', sumSales );
+console.log( 'The sum of all sales is:', sumFirstSales );
 
 
 // --------------------------------------------------
@@ -348,11 +348,11 @@ purchaseItems.forEach(function(item) {
   return firstPurchaseItems.push(item[0]);
 })
 
-var sumPurchases = firstPurchaseItems.reduce(function(total, item) {
+var sumFirstPurchases = firstPurchaseItems.reduce(function(total, item) {
   return total += item.price;
 }, 0);
 
-console.log( 'The sum of all purchases is:', sumPurchases );
+console.log( 'The sum of all purchases is:', sumFirstPurchases );
 
 
 // --------------------------------------------------
@@ -368,6 +368,7 @@ console.log( 'The sum of all purchases is:', sumPurchases );
   HINT(S):
   - Unlike 'QUESTION 08' and 'QUESTION 09', here we're interested in both 'sale' and 'purchase' transactions.
 */
+
 var netProfit;
 
 console.log( 'The net profit is:', netProfit );
