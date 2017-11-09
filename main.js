@@ -385,6 +385,17 @@ console.log( 'The most items sold in a single transaction is:', mostItems );
 /*
   Calculate the sum of the 'purchase' with the fewest items.
 */
-var sumOfSmallestPurchase;
+
+
+transactions.sort(function(a, b) {
+  if (a.items.length < b.items.length) return -1;
+  else if (a.items.length > b.items.length) return 1;
+  else return 0;
+})
+
+var sumOfSmallestPurchase = transactions[0].items.reduce(function(sum, item) {
+    return sum + item.price;
+}, 0)
+
 
 console.log( 'The sum of the smallest purchase is:', sumOfSmallestPurchase );
