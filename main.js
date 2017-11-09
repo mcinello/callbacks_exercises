@@ -308,14 +308,10 @@ sales.forEach(function(sale) {
   return saleItems.push(sale.items);
 })
 
-console.log("SALES ITEMS", saleItems);
-
 var firstSaleItems = [];
 saleItems.forEach(function(item) {
   return firstSaleItems.push(item[0]);
 })
-
-console.log("FIRST ITEMS", firstSaleItems);
 
 var sumSales = firstSaleItems.reduce(function(total, item) {
   return total += item.price;
@@ -337,7 +333,24 @@ console.log( 'The sum of all sales is:', sumSales );
   - Make sure to include 'price' information from *all* purchases.
 */
 
-var sumPurchases;
+var purchases = transactions.filter(function(transaction){
+  return transaction.type === 'purchase';
+});
+
+
+var purchaseItems = [];
+purchases.forEach(function(purchase) {
+  return purchaseItems.push(purchase.items);
+})
+
+var firstPurchaseItems = [];
+purchaseItems.forEach(function(item) {
+  return firstPurchaseItems.push(item[0]);
+})
+
+var sumPurchases = firstPurchaseItems.reduce(function(total, item) {
+  return total += item.price;
+}, 0);
 
 console.log( 'The sum of all purchases is:', sumPurchases );
 
