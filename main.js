@@ -303,12 +303,25 @@ console.log( 'The "big spenders" are:', bigSpenders );
   - Transactions don't have 'prices', but their 'items' do!
 */
 
-var sumFirstSale = 0;
-sales[0].items.forEach(function(item) {
-  sumFirstSale += item.price;
-});
 
-console.log( 'The sum of first sale is:', sumFirstSale);
+function totalSum(transactions) {
+  var total = transactions.reduce(function(sum, transaction){
+    return sum + transaction.items.reduce(function(sum, item){
+      return sum + item.price;
+    }, 0)
+  }, 0)
+  return total;
+}
+
+
+// var sumtSales = 0;
+// sales.items.forEach(function(item) {
+//   sumFirstSale += item.price;
+// });
+
+var sumSales = totalSum(sales);
+
+console.log( 'The sum of all sales is:', sumSales);
 
 
 // --------------------------------------------------
@@ -326,11 +339,8 @@ var purchases = transactions.filter(function(transaction){
   return transaction.type === 'purchase';
 });
 
-var sumPurchases = purchases.reduce(function(sum, purchase) {
-  return sum + purchase.items.reduce(function(sum, item) {
-    return sum + item.price;
-  }, 0);
-}, 0);
+var sumPurchases = totalSum(purchases);
+
 console.log( 'The sum of all purchases is:', sumPurchases );
 
 
