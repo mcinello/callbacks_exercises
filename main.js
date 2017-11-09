@@ -358,7 +358,7 @@ console.log( 'The sum of all purchases is:', sumPurchases );
   - Unlike 'QUESTION 08' and 'QUESTION 09', here we're interested in both 'sale' and 'purchase' transactions.
 */
 
-var netProfit;
+var netProfit = sumSales + sumPurchases;
 
 console.log( 'The net profit is:', netProfit );
 
