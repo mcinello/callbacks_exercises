@@ -303,23 +303,12 @@ console.log( 'The "big spenders" are:', bigSpenders );
   - Transactions don't have 'prices', but their 'items' do!
 */
 
-var saleItems = [];
-sales.forEach(function(sale) {
-  return saleItems.push(sale.items);
-})
+var sumFirstSale = 0;
+sales[0].items.forEach(function(item) {
+  sumFirstSale += item.price;
+});
 
-var firstSaleItems = [];
-saleItems.forEach(function(item) {
-  return firstSaleItems.push(item[0]);
-})
-
-var sumFirstSales = firstSaleItems.reduce(function(total, item) {
-  return total += item.price;
-}, 0);
-
-
-
-console.log( 'The sum of all sales is:', sumFirstSales );
+console.log( 'The sum of first sale is:', sumFirstSale);
 
 
 // --------------------------------------------------
@@ -337,22 +326,12 @@ var purchases = transactions.filter(function(transaction){
   return transaction.type === 'purchase';
 });
 
-
-var purchaseItems = [];
-purchases.forEach(function(purchase) {
-  return purchaseItems.push(purchase.items);
-})
-
-var firstPurchaseItems = [];
-purchaseItems.forEach(function(item) {
-  return firstPurchaseItems.push(item[0]);
-})
-
-var sumFirstPurchases = firstPurchaseItems.reduce(function(total, item) {
-  return total += item.price;
+var sumPurchases = purchases.reduce(function(sum, purchase) {
+  return sum + purchase.items.reduce(function(sum, item) {
+    return sum + item.price;
+  }, 0);
 }, 0);
-
-console.log( 'The sum of all purchases is:', sumFirstPurchases );
+console.log( 'The sum of all purchases is:', sumPurchases );
 
 
 // --------------------------------------------------
